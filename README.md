@@ -1,10 +1,9 @@
-现在只加入了简单的支持，使用如下的语法:
+0.01 现在有试验性的简单支持
 
 #### test.md
 
-这是一幅图
-```.python
->>> import matplotlib.pyplot as plt
->>> plt.plot([1,2,3,4])
->>> plt.savefig('img.png')
-```
+>	这是一幅图
+>
+>	>>> import matplotlib.pyplot as plt
+>	>>> plt.plot([1,2,3,4])
+>	>>> plt.savefig('img.png')
