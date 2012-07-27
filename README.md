@@ -2,8 +2,8 @@
 
 #### test.md
 
->	这是一幅图
->
->	>>> import matplotlib.pyplot as plt
->	>>> plt.plot([1,2,3,4])
->	>>> plt.savefig('img.png')
+	这是一幅图
+
+	>>> import matplotlib.pyplot as plt
+	>>> plt.plot([1,2,3,4])
+	>>> plt.savefig('img.png')
