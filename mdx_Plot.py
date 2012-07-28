@@ -50,7 +50,7 @@ class PlotPreprocessor(markdown.preprocessors.Preprocessor):
         exec(codeblock)
         file_name_list = self.save_pattern.findall(codeblock)
         for file_name in file_name_list:
-            new_lines += "![img](" + file_name + ")\n"
+            new_lines += "![img](" + file_name + ")"
         return new_lines
     
 class MatPlotExtension(markdown.Extension):

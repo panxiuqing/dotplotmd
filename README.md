@@ -1,6 +1,18 @@
+## HOWTO
+--------
+现在如何试用这个扩展
+
+1. 在repl下试用:
+   >>> import markdown
+   >>> markdown.markdown(textstring, ['Plot'])
+   
+2. 终端下由*markdown_py*调用:
+   $ ln -s /path/to/mdx_Plot.py /usr/.../markdown/extensions/mdx_plot.py 
+   $ markdown -x mdx_plot test.md
+
 ## VERSION HISEORY
 ------------------
-#### 0.0.3 正真的块执行，之前那个是假的，可以使用语法
+#### 0.0.3 真正的块执行，之前那个是假的，可以使用如下语法
 
 #### test3.md
 
