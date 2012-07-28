@@ -33,25 +33,24 @@ class PlotPreprocessor(markdown.preprocessors.Preprocessor):
         r"savefig\(['\"](.+?)['\"]\)")
 
     def run(self, lines):
-        ls = '\n'.join(lines)
+        lns = '\n'.join(lines)
         def repl(m):
             new_lines = ''
             try:
-                lns = m.group(1).splitlines()
+                codeblock = m.group(1)
             except ValueError:
                 return m.group()
-            new_lines = self.execmatplot(lns)
+            new_lines = self.execmatplot(codeblock)
             return new_lines
 
-        return self.pattern.sub(repl, ls).splitlines()
+        return self.pattern.sub(repl, lns).splitlines()
 
-    def execmatplot(self, lns):
+    def execmatplot(self, codeblock):
         new_lines = ''
-        for line in lns:
-            exec(line)
-            if self.save_pattern.search(line):
-                file_name = self.save_pattern.search(line).group(1)
-                new_lines += "![img](" + file_name + ")\n"
+        exec(codeblock)
+        file_name_list = self.save_pattern.findall(codeblock)
+        for file_name in file_name_list:
+            new_lines += "![img](" + file_name + ")\n"
         return new_lines
     
 class MatPlotExtension(markdown.Extension):
