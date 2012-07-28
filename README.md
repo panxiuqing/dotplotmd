@@ -4,14 +4,17 @@
 
 在repl下试用:
    
-> \>\>\> import markdown
- 
-> \>\>\> markdown.markdown(textstring, ['Plot'])
+```.python   
+import markdown 
+markdown.markdown(textstring, ['Plot'])
+```
    
 终端下由*markdown_py*调用:
 
-> $ ln -s /path/to/mdx_Plot.py /usr/.../markdown/extensions/mdx_plot.py 
-> $ markdown -x mdx_plot test.md
+```.sh
+$ ln -s /path/to/mdx_Plot.py /usr/.../markdown/extensions/mdx_plot.py 
+$ markdown -x mdx_plot test.md
+```
 
 ## VERSION HISEORY
 ------------------
