@@ -2,13 +2,14 @@
 --------
 现在如何试用这个扩展
 
-1. 在repl下试用:
-   >>> import markdown
-   >>> markdown.markdown(textstring, ['Plot'])
+在repl下试用:
+   
+> \>\>\>import markdown
+> \>\>\>markdown.markdown(textstring, ['Plot'])
    
 2. 终端下由*markdown_py*调用:
-   $ ln -s /path/to/mdx_Plot.py /usr/.../markdown/extensions/mdx_plot.py 
-   $ markdown -x mdx_plot test.md
+> $ ln -s /path/to/mdx_Plot.py /usr/.../markdown/extensions/mdx_plot.py 
+> $ markdown -x mdx_plot test.md
 
 ## VERSION HISEORY
 ------------------
