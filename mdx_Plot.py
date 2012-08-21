@@ -22,6 +22,7 @@ Dependencies:
 
 import markdown
 import re
+import os
 
 class PlotPreprocessor(markdown.preprocessors.Preprocessor):
     """
@@ -47,16 +48,30 @@ class PlotPreprocessor(markdown.preprocessors.Preprocessor):
 
     def execmatplot(self, codeblock):
         new_lines = ''
+        if self.config['img_path'] != './':
+            codeblock = self.save_pattern.sub(r"savefig('" + self.config['img_path'] + r"\1')", codeblock)
         exec(codeblock)
-        file_name_list = self.save_pattern.findall(codeblock)
-        for file_name in file_name_list:
-            new_lines += "![img](" + file_name + ")"
+        path_name_list = self.save_pattern.findall(codeblock)
+        for path_name in path_name_list:
+            new_lines += "![img](" + path_name + ")"
         return new_lines
     
 class MatPlotExtension(markdown.Extension):
+    def __init__(self, configs):
+        # define default configs
+        self.config = {
+            'img_path' : ["./", "default path of img is as same as html file"]
+            }
+
+        for key, value in configs:
+            self.setConfig(key, value)
+            
     def extendMarkdown(self, md, md_globals):
+        """ Add PlotPreprocessor to Markdown instance. """
+        ploter = PlotPreprocessor(md)
+        ploter.config = self.getConfigs()
         md.registerExtension(self)
-        md.preprocessors.add('PlotPreprocessor', PlotPreprocessor(md), '>reference')
+        md.preprocessors.add('PlotPreprocessor', ploter, '>reference')
 
 def makeExtension(configs=None):
     return MatPlotExtension(configs=configs)
